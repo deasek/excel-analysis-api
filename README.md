@@ -35,7 +35,7 @@ docker compose exec web python manage.py migrate
 
 ```bash
 curl -X POST http://localhost:8000/api/analyze/ \
-  -F 'file=@your_file.xlsx' \
+  -F 'file=file.xlsx' \
   -F 'columns=price' \
   -F 'columns=quantity'
 ```
@@ -44,7 +44,7 @@ curl -X POST http://localhost:8000/api/analyze/ \
 
 ```json
 {
-  "file": "your_file.xlsx",
+  "file": "file.xlsx",
   "summary": [
     {"column": "price", "sum": 1012.0, "avg": 651.55},
     {"column": "quantity", "sum": 150.0, "avg": 25.0}
@@ -53,9 +53,7 @@ curl -X POST http://localhost:8000/api/analyze/ \
 ```
 
 ## API Documentation
-
 - **Swagger UI:** http://localhost:8000/api/docs/
-- **API Info:** http://localhost:8000/api/
 
 ## Testing
 
@@ -69,3 +67,4 @@ docker compose exec web python manage.py test
 - Doesn't use database (may be worth to store processing results or cache them)
 - May be extended with extra processing (like counting values, extra validations etc)
 - Extra work work required to support example excel file provided in task description (multi sheet, no explicit header with columns etc)
+- Current setup isn't proper for production deployment (uses django app server). May be worth to add application server like gunicorn and update Dockerfile to use it (with runserver used only in docker-compose).
