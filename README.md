@@ -12,7 +12,7 @@ Django REST API for uploading Excel files and calculating column summaries.
 
 1. **Clone and configure:**
 ```bash
-git clone <your-repo>
+git clone https://github.com/deasek/excel-analysis-api
 cd excel-analysis-api
 cp .env.example .env
 ```
