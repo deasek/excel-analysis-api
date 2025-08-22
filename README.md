@@ -63,3 +63,9 @@ curl -X POST http://localhost:8000/api/analyze/ \
 ```bash
 docker compose exec web python manage.py test
 ```
+
+## Future changes, ideas, notes:
+- May be worth to introduce background processing with Celery for more complex processing of data (exports, integrations)
+- Doesn't use database (may be worth to store processing results or cache them)
+- May be extended with extra processing (like counting values, extra validations etc)
+- Extra work work required to support example excel file provided in task description (multi sheet, no explicit header with columns etc)
