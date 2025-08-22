@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+venv/
+.vscode/
+.DS_Store
+.idea/
+.ruff_cache/
+excel_analysis/__pycache__/
+excel_analysis/db.sqlite3

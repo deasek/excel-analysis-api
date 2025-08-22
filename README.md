@@ -1,0 +1,65 @@
+# Excel Analysis API
+
+Django REST API for uploading Excel files and calculating column summaries.
+
+## Quick Start
+
+### Prerequisites
+
+- Docker and Docker Compose installed
+
+### Setup
+
+1. **Clone and configure:**
+```bash
+git clone <your-repo>
+cd excel-analysis-api
+cp .env.example .env
+```
+
+2. **Start the API:**
+```bash
+docker compose up --build -d
+```
+
+3. **Run database migrations:**
+```bash
+docker compose exec web python manage.py migrate
+```
+
+**API ready at:** http://localhost:8000
+
+## Usage
+
+### Upload and Analyze Excel File
+
+```bash
+curl -X POST http://localhost:8000/api/analyze/ \
+  -F 'file=@your_file.xlsx' \
+  -F 'columns=price' \
+  -F 'columns=quantity'
+```
+
+### Response
+
+```json
+{
+  "file": "your_file.xlsx",
+  "summary": [
+    {"column": "price", "sum": 1012.0, "avg": 651.55},
+    {"column": "quantity", "sum": 150.0, "avg": 25.0}
+  ]
+}
+```
+
+## API Documentation
+
+- **Swagger UI:** http://localhost:8000/api/docs/
+- **API Info:** http://localhost:8000/api/
+
+## Testing
+
+### Run all tests:
+```bash
+docker compose exec web python manage.py test
+```
