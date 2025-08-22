@@ -39,6 +39,15 @@ curl -X POST http://localhost:8000/api/analyze/ \
   -F 'columns=price' \
   -F 'columns=quantity'
 ```
+Optional sheet name may be provoded:
+```bash
+curl -X POST http://localhost:8000/api/analyze/ \
+  -F 'file=file.xlsx' \
+  -F 'columns=price' \
+  -F 'columns=quantity' \
+  - F 'sheet_name=French Langage`
+```
+
 
 ### Response
 
